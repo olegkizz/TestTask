@@ -15,7 +15,7 @@ namespace TestTask.Services.Implementations
         }
         public async Task<User> GetUser()
         {
-            return  await _context.Users.OrderByDescending(u => u.Orders.Count)
+            return  await _context.Users.OrderByDescending(u => u.Orders.Max(o => o.Quantity))
                         .FirstOrDefaultAsync();
         }
 
